@@ -1,0 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JSTL Tag</title>
+</head>
+<body>
+
+<c:set var="num" value="100"/>
+<c:out value="${num}"/> <br>
+
+<c:catch var="e"> 
+  ${num/0}
+</c:catch>
+<c:out value="${e}"/> <br>
+
+<c:out value="${num}"></c:out> <br>
+<c:remove var="num"/>
+<c:out value="${num }"></c:out> <br>
+
+</body>
+</html>

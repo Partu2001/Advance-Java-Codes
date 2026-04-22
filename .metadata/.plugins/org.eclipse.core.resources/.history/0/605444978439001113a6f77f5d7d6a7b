@@ -1,0 +1,10 @@
+package com.java.daointerface;
+
+import java.util.List;
+import com.java.entity.Gift;
+
+public interface GiftDaoInterface {
+
+	int addGift(Gift g);
+	
+}

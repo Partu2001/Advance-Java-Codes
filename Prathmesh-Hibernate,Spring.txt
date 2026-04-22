@@ -1,0 +1,49 @@
+*Hibernate :
+1.Hibernate :
+-Hibernate is Java based framework used to interact with database.
+-Hibernate is mainly used for to make the database tables automatically.
+-It makes the java class in the form of table,variables in the column,object into rows.
+
+Advantage :
+1.No need to sql queries because it makes table automatically.
+2.It provide security.
+3.Working is faster.
+
+2.ORM :
+-Stands for Object Relational Mapping.
+-It converts the object into row form
+-It is used for convert data into object form and relational database.
+
+3.
+in that consists :
+url,username,password,classpath,show SQL,dilect
+
+4.
+-get() : fetch the data immidietly and hit the database.work faster
+-load() : as compare to get it is slower it fetch the database when needed.
+
+5.HQL :
+-It stands for Hibernate Query Language 
+It is like SQL,used to interact with database and perform the various queries like create,update,delete,fetch
+
+*Spring Core :
+1.
+-Spring is a java based framework used to create java application.
+-loosely coupled
+-lightweight
+
+2.
+-Inversion control also called dependency injection.
+-used to inject the dependencies .
+
+3.
+-It used for inject the various dependencies in the java program.
+-Types :
+1.Constrructor
+2.Setter 
+
+4.
+-Constructor : inject the constructor using constructor method
+-setter : inject the setter using setter method
+
+5.Bean Lifecycle :

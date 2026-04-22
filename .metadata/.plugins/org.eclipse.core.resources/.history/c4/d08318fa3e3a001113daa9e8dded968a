@@ -1,0 +1,16 @@
+package com.java.app;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.java.daointerface.GiftHibernateInterface;
+import com.java.entity.HibernateGift;
+
+public class MainGiftHibernate {
+	
+	ApplicationContext app=new AnnotationConfigApplicationContext(HibernateGift.class);
+	GiftHibernateInterface hi=app.getBean(GiftHibernateInterface.class);
+	
+	Hib
+
+}

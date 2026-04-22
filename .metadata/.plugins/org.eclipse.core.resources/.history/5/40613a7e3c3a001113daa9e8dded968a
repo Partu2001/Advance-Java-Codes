@@ -1,0 +1,42 @@
+package com.java.daoimplement;
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.java.daointerface.GiftHibernateInterface;
+import com.java.entity.HibernateGift;
+
+@Repository
+public class GiftHibernateImplementation implements GiftHibernateInterface {
+	
+	@Autowired
+	Session session;
+
+	@Override
+	public int addGift(HibernateGift hg) {
+	   query="insert into gifts values(?,?,?,?)";
+	   return session.update(query,hg.getGiftId(),hg.getGiftName(),hg.getCategory(),hg.getPrice());
+	}
+
+	@Override
+	public int updateGift(HibernateGift hg) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int deleteGift(int giftId) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<HibernateGift> getAllGift() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

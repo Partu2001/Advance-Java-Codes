@@ -1,0 +1,37 @@
+package com.java.daoimplement;
+
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.java.daointerface.GiftDaoInterface;
+import com.java.entity.Gift;
+
+@Repository
+public class GiftDaoImplementation implements GiftDaoInterface {
+
+	@Override
+	public int addGift(Gift g) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int updateGift(Gift g) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int deleteGift(int id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<Gift> getAllGift() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

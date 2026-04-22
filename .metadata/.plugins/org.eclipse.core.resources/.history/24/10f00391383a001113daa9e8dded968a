@@ -1,0 +1,9 @@
+package com.java.entity;
+
+public class HibernateGift {
+
+	int giftId;
+	String giftName;
+	String category;
+	double price;
+}

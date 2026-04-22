@@ -1,0 +1,273 @@
+// ================= PROJECT STRUCTURE =================
+// HotelManagement/
+// ├── src/main/java/com/hotel/servlet/
+// │   ├── RegisterServlet.java
+// │   ├── LoginServlet.java
+// │   ├── RoomServlet.java
+// │   ├── BookingServlet.java
+// │   ├── DBConnection.java
+// ├── src/main/webapp/
+// │   ├── index.jsp
+// │   ├── register.jsp
+// │   ├── login.jsp
+// │   ├── dashboard.jsp
+// │   ├── admin.jsp
+// │   ├── addRoom.jsp
+// │   ├── viewRooms.jsp
+// │   ├── bookRoom.jsp
+// │   ├── viewBooking.jsp
+// │   ├── css/style.css
+
+
+// ================= DBConnection.java =================
+package com.hotel.servlet;
+import java.sql.*;
+
+public class DBConnection {
+    public static Connection getConnection() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            return DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel","root","root");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+}
+
+// ================= RegisterServlet.java =================
+package com.hotel.servlet;
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.sql.*;
+
+public class RegisterServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        String name = req.getParameter("name");
+        String email = req.getParameter("email");
+        String pass = req.getParameter("password");
+
+        try {
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps = con.prepareStatement("insert into users values(?,?,?)");
+            ps.setString(1, name);
+            ps.setString(2, email);
+            ps.setString(3, pass);
+            ps.executeUpdate();
+            res.sendRedirect("login.jsp");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+// ================= LoginServlet.java =================
+package com.hotel.servlet;
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.sql.*;
+
+public class LoginServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        String email = req.getParameter("email");
+        String pass = req.getParameter("password");
+
+        try {
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps = con.prepareStatement("select * from users where email=? and password=?");
+            ps.setString(1, email);
+            ps.setString(2, pass);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                HttpSession session = req.getSession();
+                session.setAttribute("user", email);
+                res.sendRedirect("dashboard.jsp");
+            } else {
+                res.sendRedirect("login.jsp");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+// ================= RoomServlet.java =================
+package com.hotel.servlet;
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.sql.*;
+
+public class RoomServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        String roomNo = req.getParameter("roomNo");
+        String type = req.getParameter("type");
+        String price = req.getParameter("price");
+
+        try {
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps = con.prepareStatement("insert into rooms values(?,?,?)");
+            ps.setString(1, roomNo);
+            ps.setString(2, type);
+            ps.setString(3, price);
+            ps.executeUpdate();
+            res.sendRedirect("viewRooms.jsp");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+// ================= BookingServlet.java =================
+package com.hotel.servlet;
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.sql.*;
+
+public class BookingServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        String user = (String) req.getSession().getAttribute("user");
+        String roomNo = req.getParameter("roomNo");
+
+        try {
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps = con.prepareStatement("insert into bookings values(?,?)");
+            ps.setString(1, user);
+            ps.setString(2, roomNo);
+            ps.executeUpdate();
+            res.sendRedirect("viewBooking.jsp");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+// ================= index.jsp =================
+<%@ page language="java" %>
+<html>
+<head>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<h1>Hotel Management System</h1>
+<a href="register.jsp">Register</a>
+<a href="login.jsp">Login</a>
+</body>
+</html>
+
+// ================= register.jsp =================
+<html><head><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<form action="RegisterServlet" method="post">
+<input type="text" name="name" placeholder="Name">
+<input type="email" name="email" placeholder="Email">
+<input type="password" name="password" placeholder="Password">
+<button type="submit">Register</button>
+</form>
+</body></html>
+
+// ================= login.jsp =================
+<html><head><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<form action="LoginServlet" method="post">
+<input type="email" name="email" placeholder="Email">
+<input type="password" name="password" placeholder="Password">
+<button type="submit">Login</button>
+</form>
+</body></html>
+
+// ================= dashboard.jsp =================
+<html><head><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<h2>Dashboard</h2>
+<a href="viewRooms.jsp">View Rooms</a>
+<a href="bookRoom.jsp">Book Room</a>
+<a href="viewBooking.jsp">View Booking</a>
+</body></html>
+
+// ================= admin.jsp =================
+<html><head><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<h2>Admin Panel</h2>
+<a href="addRoom.jsp">Add Room</a>
+<a href="viewRooms.jsp">View Rooms</a>
+</body></html>
+
+// ================= addRoom.jsp =================
+<html><head><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<form action="RoomServlet" method="post">
+<input type="text" name="roomNo" placeholder="Room No">
+<input type="text" name="type" placeholder="Type">
+<input type="text" name="price" placeholder="Price">
+<button>Add Room</button>
+</form>
+</body></html>
+
+// ================= viewRooms.jsp =================
+<%@ page import="java.sql.*" %>
+<%@ page import="com.hotel.servlet.DBConnection" %>
+<html><body>
+<table border="1">
+<%
+Connection con = DBConnection.getConnection();
+Statement st = con.createStatement();
+ResultSet rs = st.executeQuery("select * from rooms");
+while(rs.next()){
+%>
+<tr><td><%=rs.getString(1)%></td><td><%=rs.getString(2)%></td><td><%=rs.getString(3)%></td></tr>
+<% } %>
+</table>
+</body></html>
+
+// ================= bookRoom.jsp =================
+<html><body>
+<form action="BookingServlet" method="post">
+<input type="text" name="roomNo" placeholder="Enter Room No">
+<button>Book</button>
+</form>
+</body></html>
+
+// ================= viewBooking.jsp =================
+<%@ page import="java.sql.*" %>
+<%@ page import="com.hotel.servlet.DBConnection" %>
+<html><body>
+<table border="1">
+<%
+Connection con = DBConnection.getConnection();
+Statement st = con.createStatement();
+ResultSet rs = st.executeQuery("select * from bookings");
+while(rs.next()){
+%>
+<tr><td><%=rs.getString(1)%></td><td><%=rs.getString(2)%></td></tr>
+<% } %>
+</table>
+</body></html>
+
+// ================= style.css =================
+body {
+    font-family: Arial;
+    background: url('hotel.jpg');
+    background-size: cover;
+    text-align: center;
+}
+form {
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(255,255,255,0.8);
+    width: 300px;
+}
+input, button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    width: 90%;
+}
+a {
+    display: block;
+    margin: 10px;
+}

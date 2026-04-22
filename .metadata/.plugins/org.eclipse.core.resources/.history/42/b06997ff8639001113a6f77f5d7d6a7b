@@ -1,0 +1,55 @@
+package com.java.daoimplement;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+import com.entity.Students;
+import com.java.daointerface.GiftDaoInterface;
+import com.java.entity.Gift;
+
+@Repository
+public class GiftDaoImplementation implements GiftDaoInterface {
+	
+	@Autowired
+	JdbcTemplate jt;
+
+	@Override
+	public int addGift(Gift g) {
+		String query="insert into gift values(?,?,?,?)";
+		int result= jt.update(query,g.getGiftId(),g.getGiftName(),g.getCategory(),g.getPrice());
+		System.out.println("Data inserted..");
+		return result;
+		
+	}
+
+	@Override
+	public int updateGift(Gift g) {
+		String query="update gift set name=?,category=?,price=? where id=?";
+		int result1=jt.update(query,g.getGiftName(),g.getCategory(),g.getPrice(),g.getGiftId());
+		System.out.println("Data Updated..");
+		return result1;
+	}
+
+	@Override
+	public int deleteGift(int id) {
+		String query="delete from gift where id=?";
+		int result2=jt.update(query,id);
+		System.out.println("Data deleted..");
+		return result2;
+	}
+
+	@Override
+	public List<Gift> getAllGift() {
+		String query="select * from gift";
+	     jt.query(query,(rs,rows) -> {
+			Gift g=new Gift();
+		
+	
+		});
+		return null;
+	}
+
+}

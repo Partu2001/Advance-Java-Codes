@@ -1,0 +1,28 @@
+package com.java.app;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.java.daointerface.GiftHibernateInterface;
+import com.java.entity.HibernateGift;
+
+public class MainGiftHibernate {
+	
+	public static void main(String[] args) {
+		
+
+	ApplicationContext app=new AnnotationConfigApplicationContext("com");
+	GiftHibernateInterface hi=app.getBean(GiftHibernateInterface.class);
+	
+	
+	HibernateGift hg=new HibernateGift();
+	hg.setGiftName("Teddy");
+	hg.setCategory("Medium");
+//	hg.setPrice(500);
+//	hi.addGift(hg);
+//	
+	hi.updateGift(hg, 52);
+	
+	}
+
+}

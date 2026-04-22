@@ -1,0 +1,9 @@
+package com.java.daointerface;
+
+import com.java.entity.HibernateGift;
+
+public interface GiftHibernateInterface {
+	
+	int addGift(HibernateGift hg);
+
+}

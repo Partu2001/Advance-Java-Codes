@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Update Student</title>
+</head>
+<body>
+
+<h1>Update Student Info</h1>
+
+<form action="/studentportal/updatestudent" method="post">
+Id : <input type="hidden" name="id" th:value="${update.id}">
+Name : <input type="text" placeholder="Enter Name " name="name" required th:value="${update.name}"> <br> <br>
+Roll No : <input type="number" placeholder="Enter Roll No" name ="rollno" required th:value="${update.rollno}"> <br> <br>
+Gender : <input type="radio" name="gender" value="Male" th:checked="${update.gender=='Male'}">Male
+ <input type="radio" name="gender" value="Female" th:checked="${update.gender=='Female'}">Female
+ <input type="radio" name="gender" value="Others" th:checked="${update.gender=='Others'}">Others <br> <br>
+ City : <select name="city">
+ <option value="pune" th:selected="${update.city=='pune'}">Pune</option>
+ <option value="mumbai" th:selected="${update.city=='mumbai'}">Mumbai</option>
+ <option value="delhi" th:selected="${update.city=='delhi'}">Delhi</option>
+ <option value="kolhapur" th:selected="${update.city=='kolhapur'}">Kolhapur</option>
+ <option value="sangli" th:selected="${update.city=='sangli'}">Sangli</option>
+ </select> <br> <br>
+ <input type="submit">
+</form>
+
+</body>
+</html>

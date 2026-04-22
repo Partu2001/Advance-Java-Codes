@@ -1,0 +1,5 @@
+package com.springbootdemo.SpringBootProject.controller;
+
+public class MyController {
+
+}

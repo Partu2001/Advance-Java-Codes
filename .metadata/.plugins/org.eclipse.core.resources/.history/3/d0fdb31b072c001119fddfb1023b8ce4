@@ -1,0 +1,40 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JSTL Tag</title>
+</head>
+<body>
+
+<c:set var="num" value="100"/>
+<c:out value="${num}"/> <br>
+
+<c:catch var="e"> 
+  ${num/2}
+</c:catch>
+<c:out value="${e}"/> <br>
+
+<c:out value="${num}"></c:out> <br>
+<c:remove var="num"/>
+<c:out value="${num }"></c:out> <br>
+
+<!-- IF -->
+<c:set var="a" value="20"></c:set>
+<c:if test="${a==20 }">
+<h1>Condition is true</h1>
+</c:if> <br>
+
+<!-- Choose and when and otherwise -->
+<c:set var="color" value="Blue"></c:set>
+<c:choose>
+<c:when test="${color=='Red' }">Color is Red</c:when>
+<c:when test="${color=='Blue' }">Color is Blue</c:when>
+<c:when test="${color=='Yellow' }">Color is Yellow</c:when>
+</c:choose>
+<c:otherwise>Not in list</c:otherwise>
+
+</body>
+</html>

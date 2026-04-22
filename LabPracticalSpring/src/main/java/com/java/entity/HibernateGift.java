@@ -1,0 +1,27 @@
+package com.java.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+
+import lombok.Data;
+
+@Table
+@Entity
+@Data
+@Component
+public class HibernateGift {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "gift_Seq")
+	@SequenceGenerator( allocationSize = 1,initialValue = 101, name = "gift_seq")
+	int giftId;
+	String giftName;
+	String category;
+	double price;
+}

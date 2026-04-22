@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    
+    <bean id="emp" class="com.java.entity.Calculator">
+    
+    </bean>
+    
+    <bean id="cal" class="com.java.entity.Calculator">
+    <property name="n1" value="7"></property>
+    <property name="n2" value="5"></property>
+    </bean>
+
+</beans>
+

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Show Student</title>
+</head>
+<body>
+<h1>Student Info</h1>
+
+<table border="1">
+<thead>
+<tr>
+<th>Id</th>
+<th>RollNo</th>
+<th>Name</th>
+<th>Gender</th>
+<th>City</th>
+</tr>
+</thead>
+
+<tbody>
+<tr th:each="s :${list}">
+<td th:text="${s.id}"></td>
+<td th:text="${s.rollno}"></td>
+<td th:text="${s.name}"></td>
+<td th:text="${s.gender}"></td>
+<td th:text="${s.city}"></td>
+
+</tr>
+</tbody>
+</table>
+</body>
+</html>

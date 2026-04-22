@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+        
+        <bean id="person" class="com.java.entity.Person">
+        <property name="name" value="Prathmesh"></property>
+         <property name="age" value="24"></property>
+        </bean>
+        
+          
+        <bean id="doctor" parent="person" class="com.java.entity.Doctor">
+        <property name="id" value="101"></property>
+         <property name="docto_Type" value="Neuro Sergen"></property>
+         <property name="hospital_Name" value="Rubi Clinic"></property>
+        </bean>
+        
+            
+        <bean id="developer" parent="person" class="com.java.entity.Developer">
+        <property name="id" value="1001"></property>
+         <property name="developer_Type" value="Java Developer"></property>
+         <property name="company_Name" value="Wipro"></property>
+        </bean>
+</beans>
+

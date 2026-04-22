@@ -1,0 +1,9 @@
+package com.springbootdemo.controller;
+
+public class MyController {
+	
+	public String display() {
+		return "Hello Partu";
+	}
+
+}

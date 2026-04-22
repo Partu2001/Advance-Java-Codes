@@ -1,0 +1,42 @@
+package com.java.app;
+
+import java.util.List;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.java.daointerface.GiftDaoInterface;
+import com.java.entity.Gift;
+
+public class MainGift {
+
+	public static void main(String[] args) {
+
+		ApplicationContext app = new AnnotationConfigApplicationContext("com");
+
+		GiftDaoInterface dao = app.getBean(GiftDaoInterface.class);
+
+		Gift g1 = new Gift();
+		g1.setGiftId(1);
+		g1.setGiftName("Teddy");
+		g1.setCategory("Soft Toy");
+		g1.setPrice(500);
+		dao.addGift(g1);
+
+		Gift g2 = new Gift();
+		g2.setGiftId(1);
+		g2.setGiftName("Big Teddy");
+		g2.setCategory("Soft Toy");
+		g2.setPrice(800);
+
+		dao.updateGift(g2);
+
+        dao.deleteGift(1);
+		
+		List<Gift> list = dao.getAllGift();
+		for (Gift g : list) {
+			System.out.println(g.getGiftId() + " " + g.getGiftName() + " " +
+					g.getCategory() + " " + g.getPrice());
+		}
+	}
+}

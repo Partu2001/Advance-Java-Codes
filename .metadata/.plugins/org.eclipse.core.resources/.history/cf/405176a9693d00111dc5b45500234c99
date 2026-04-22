@@ -1,0 +1,9 @@
+package com.springbootdemo.SpringBootProject.entity;
+
+public class Student {
+	
+	int id;
+	int rollno;
+	String name,gender,city;
+
+}

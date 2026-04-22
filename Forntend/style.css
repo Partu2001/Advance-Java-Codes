@@ -1,0 +1,36 @@
+body{
+font-family: Arial;
+background:#eee;
+}
+
+table{
+background:#23dbd7;
+color:white;
+padding:20px;
+border-radius:6px;
+}
+
+h2{
+text-align:center;
+color:#b51212;
+}
+
+input, select, textarea{
+padding:5px;
+border-radius:3px;
+border:1px solid #ccc;
+}
+
+textarea{
+width:300px;
+height:70px;
+}
+
+button{
+padding:8px 15px;
+border:none;
+background:#fff;
+color:#000;
+font-weight:bold;
+cursor:pointer;
+}

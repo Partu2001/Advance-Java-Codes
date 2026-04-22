@@ -1,0 +1,11 @@
+INDEX VERSION 1.134
+D:\partu\SEED INFOTECH\Advance Java\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3990725807.index
+\JSTLProject\src\main\java
+D:\partu\SEED INFOTECH\Advance Java\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\986869742.index
+\LabPracticalJSP\src\main\java
+D:\partu\SEED INFOTECH\Advance Java\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\819110657.index
+\FirstProject\src\main\java
+D:\partu\SEED INFOTECH\Advance Java\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4210297932.index
+\JSPProject\src\main\java
+D:\partu\SEED INFOTECH\Advance Java\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2623054842.index
+\MiniWebProject-Hotel Management System\src\main\java

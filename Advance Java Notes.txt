@@ -1,0 +1,1341 @@
+
+**************************************************************  ADVANCE JAVA   ****************************************************************
+
+** WEB APPLICATION :
+-It is collection of interconnected web pages that includes
+   -images,videos,audio,style sheets,documents,menus,link and other web related resources and script code.
+-Ex :
+     Stock market application,Net banking,E-commerce application.
+-It is hosted on a server known as web server.
+-Web servers delivers the web pages on response to request from the website visitors.
+-Ex :
+     There are several types of web servers including Niginx,IIS from Microsoft,Lighttpd,LightSpeed,Jetty and Apache from Appache software foundation.
+
+* FEATURES :
+-Application able to support a set of thousand users.
+-Servers be available for 24*7*365.
+-Access using internet connectivity.
+-Provide secured access to the application resources.
+-Ex. Banking Application,Airline Reservation,E-Commerce Application etc.
+
+* WEB APPLICATION ARCHITECTURE :
+                                                                                            HTTP
+    PC/Mac/Unix?..Browser                             <========================            Web Container
+       Client                                                            =========================>              Server
+
+* WEB BROWSER :
+-An application software or program designed to enable users to access,retrive and view documents and other resources on the internet.
+-A information resource could be a web page,image,multimedia,Adobe files etc.
+-It is identified by a Uniform Resources Identifier(URI).
+
+-The most popular browser in the market are :
+  -Interne Explorer(IE) : Developed by Microsoft Corporation.
+  -Firefox : A free and open source web browser managed by Mozilla Corporation.
+  -Opera : A web browser developed by opera software.
+
+** WEB SERVER : 
+-Web server is a software that helps to deliver content that can be accessed through internet.
+-The first job of web server is to deliver the web pages on request to the clients.(repeated)
+* Features :
+  -Virtual Hosting
+  -Large File Support
+  -Bandwidth Throtting
+  -Server Side Scripting
+
+* Example :
+ -Pupular web servers :
+   The most popular and famous web server is Apache developed by the Apache Foundation.
+ -Internet Information Services(IIS) :
+   An integral part of windows server family of products
+   It is a web server application and
+   A set of modules also reffered to as extensions.
+    
+
+** WEB APPLICATION ARCHITECTURE - Web Container :
+-Software application used to host web application.
+-Provide infrastructure services
+-Provides support to application by extending contact point in form of interfaces.
+-Works exclusively on HTTP based request - response architecture.   
+
+** HYPERTEXT TRANSFER PROTOCOL HTTP :
+-The top level protocol used to request and return data.
+  Ex.HTML pages,GIFs,JPEFs,Microsoft Word documents,Adobe Pdf documents etc.
+-The protocol which is used to access web application.
+-It works on port no:80 and run on TCP/TP
+
+* HTTP Message Format :
+-Address
+-This is called URL
+-URL : Uniform Resource Locators
+-URI : Uniform Resource Identifire
+-Two type of paths: 
+ 1.Absolute path : refer to very specific location including the domain name
+ 2.Relative path : change depending upon what page links are located on.
+
+-Request-Method Request-URI Protocol
+   Ex.GET/index.html HTTP /1.1
+-Rsponse-Protocol Status-Code Description
+  Ex.HTTP/1.1 200 OK
+  Every response contains a status code.
+    -100 level : Informational
+    -200 level : Success
+    -300 level : Redirection
+    -400 level : Client Error
+    -500 level : Server Error
+
+** SAMPLE SESSION :
+1.Client opens a connection to the server.
+2.Client makes a request to the server.
+   GET/index.html HTTP/1.0
+3.The server responds to the request
+    -HTTP/1.0 200 OK
+    -more header stuff
+    -CRLF
+    -<html>
+    -html code
+    -</html>
+
+* GET : HTTP METHOD :
+-Most commonly used method.
+-A GET request does not contain any HTTP body,data passed through address line.
+-The information is appended to the URL
+-The total length of characters in GET method confirmed to 240 character only by some servers.
+-Not secure method.
+-Prformance based. 
+
+* POST : HTTP METHOD :
+-All information stored in the body of the request rather than in the URL which gaves for more privacy
+-POST method is used for sending credit card no,updated database etc.
+   POST/index.html HTTP/1.1
+-The information exchange is invisible to the client.
+-Unlike GET method the information length is unlimited.
+-More secure method.
+-Information passed through packets hence not performance based.
+
+* WEB APPLICATION PROGRAMMING : 
+-Web based application are developed using :
+  1. Client side Programming : 
+     -The class of computer programs on the web that are executed client side by the users web browser
+     -HTML,DHTML,JAVASCRIPT,VBSCRIPT
+  2.Server Side Programming :
+     -Software that runs on the server,not the client using technologies like
+    -Active Server Pages (ASP) developed by Microsoft.
+    -Java Server Page (JSP) developed by SunMicrosoft  
+
+*****************************************************************************************************************************************
+********************************************************  SERVLET  ************************************************************************
+**SERVLET HIRARCHY :
+                      Serializable                               Servlet                                   ServletConfiguration
+                                                                                 
+                                                                     GenericServlet
+
+                                                                      HTTPServlet
+
+1. SERIALIZABLE (Interface) :
+-Serializable is a marker interface from Java.
+-It allows the serviet object to be converted into bytes.
+*Why is this needed?
+-Servlet container may:
+  Save servlet state
+  Transfer serviet between servers
+  Support session replication
+-GenericServlet implements Serializable so servlet can be safely managed by the container. 
+
+2. SERVLET (Interface) :
+-This is the core interface of Serviet API
+-It defines the life cycle of a servlet
+* Important methods:
+-init() called once
+-service() handles requests
+-destroy() called once before removal
+-getServletConfig()
+-getServletinfo()
+Any class that wants to become a servlet must follow this interface.
+
+3. SERVLETCONFIGURATION (Interface) :
+-Used to pass initialization parameters to a sviet.
+-Parameters are defined in web.xml or annotations.
+* Key points :
+-Works for one servlet only
+-Used inside ide init()
+
+4. GENERICSERVLET (Abstract Class) :
+-GenericServlet is the bridge between inters and real servlets.
+-It:
+ Implements Servlet
+ Implements ServletConfig
+ Implements Serializable
+* Why GenericServlet is important?
+-Removes complexity
+-Provides ready-made implementations
+-Developer only needs to override service() method
+* Key features:
+-Protocol independent
+-Does not care if request is HTTP, FTP, etc.
+-Mostly used for learning, not real projects.
+
+5. HTTPSERVLET (Abstract Class) :
+-HttpServlet extends GenericServlet
+-Specially designed for HTTP protocol
+-This is the MOST USED class in real projects.
+* It provides:
+-doGet()→ GET request
+-doPost() → POST request
+-doPut()
+-doDelete()
+
+** SERVLETS :
+-A Server-Side Java program.
+-Used to generate Dynamic Web Pages.
+-A Web-Server extension.
+-Hosted and Managed by Web Container.
+ 
+** FEATURES OF SERVLETS :
+1.Efficient : Uses threads not new processes.
+2.Persistent : Servlet stays in memory.
+3.Portable : Runs on any OS.
+4.Robust : Handles error well.
+5.Extensible : Easy to extend functionality.
+6.Secure : Supports authentication and HTTPS.
+7.Scalable : Handles multiple users at the same time. 
+
+***  SERVLET LIFE CYCLE : 
+-Divided into 4 Parts :
+1.Loading and Instatantiation.
+2.Initialization
+3.Servicing the Request
+4.Destroying the Servlet
+
+1. Loading & Instantiation :
+-Servlet class is loaded
+-Object is created by server
+
+2. Initialization :
+-init() method is called
+-Runs only once
+
+3. Request Processing :
+-service() method is called
+-Handles client requests
+-Calls doGet() or doPost()
+
+4.Destroy :
+-destroy() method is called
+-Servlet is removed from memory
+
+
+** SERVLET EXECUTION :
+-Once initialized the servlet container identifies the method corresponding to the HTTP method (request method) 
+ doGet : HTTP get method
+ doPost : HTTP post method
+-The request sent by the browser is encapsulated into an HttpServletRequest object and
+-The corresponding response is embedded as HttpServletResponse object.
+
+** CONFIGURATION : 
+-For an application to be identified as a web application it is mandatory for the configuration to be present.
+-Can be present
+ explicity(web.xml)
+ implicity (annotation)
+-The data required for the component identification needs to be manitained at the central location.
+ Useful for storing multiple compenent data in a single artifact. 
+ This single artifact is known as web.xml.
+
+** WEBSERVLET - ANNOTATION 
+-In Servlet 3.0 web.xml is optional
+-Configuration part managed by annotation called @webServlet.
+-URL-pattern attribute is mandatory.
+-It reduces the complexity of web.xml.
+
+** Request Retrieval and Response Generation :
+1. Web application responds to user's requirement by retrieving the data embedded inside the HTTP request object.
+2. The data to be shared with the user also needs to be embedded inside the HTTP response object
+ The response could be result of business logic execution or a notification specifying outcome of the process.
+
+** SERVLET COLLABORATION :
+-Communication between two servlet is termed as servlet collaboration.
+-Shared information is passed directly from ine servlet to another.
+-This process is called "Request Dispatching".
+-Only request is passed to the next page/servlet but not values.
+
+** REQUEST DISPATCHER :
+                                                                                          ==>Servlet 1(Response (Include))
+  Browser  ==> Servlet 1    ==> Servlet 2                  ==>Browser (Response (Forword))
+
+** RESPONSE REDIRECT :
+-HttpServletResponse contains method
+    public void sendRedirect(Stringlocation)
+-This method sends a redirect response to the client.
+-sendRedirect() is used if
+  The browser has to initiate a new request to a different servlet/JSP.
+  The servlet/JSP that is to be forwarded is not in the same web application.
+
+*******************************************************************************
+
+** SESSION :
+-To provide implementation for a complex requirement multiple request from user are required.
+-Entire interaction is called as a Session.
+ A session starts from the first user request still the application is closed(Implicity or Explicity).
+-The intermediate data generated as a part of the request processing needs to be maintained for seamless execution.
+
+* WHY SESSION TRACKING :
+-Web application work on HTTP.
+-HTTP is stateless protocol.
+ Client state and execution history is not maintained.
+-Dynamic application are bulit on the assumption that the same client access the application multiple times.
+-Client data is lost with every request being considered as a new request.
+-For a truly responsive application - the client data to be  maintained at the server side  for client identification.
+-As HTTP does not provide any tools or utilities.
+ Programmer to take care of identifying the client programmatically over the duration of a clients application access(a session).
+-There is need to track the user activity across the entire session.
+ This mechanism is called as session tracking.
+
+* WHAT IS HTTPSESSION :
+-HttpSession is an object provided to perform session tracking.
+-Provides ease-of-programming to the developer by combining user identification and state management into a single object.
+
+* HTTP SESSION OBJECT :
+-This object created by the container.
+-Saves information such as session id,creation time and last accessed time.
+-Has default timeout value is 30 min.
+-User information stored into the session object by using setAtrribute () method.
+ Later when needed this information can be fetched from the session. 
+
+********************************************************************************************************************************************
+
+******************************************************   JAVA SERVER PAGES (JSP)  ***************************************************************
+
+** INTRODUCTION TO JAVA SERVER PAGES (JSP) :
+-Java server pages is technology that generates dynamic web pages based on HTML.
+-Features : 
+ Java code embedded in HTML code
+ More HTML code and less java code.
+ Simplifies the dynamic presentation layer in a multi-tiered architecture.
+ Seperate presentation and business logic.
+ JSP is template based content genrator.
+
+ ** JSP LIFE CYCLE :
+It is divided into 7 phases :
+1.Translation
+2.Compilation
+3.Loading
+4.Instatiation
+5.Initialization
+6.Service
+7.Destruction
+
+1.Translation : The JSP is translated into servlet source code.
+2.Compilation : The servlet source code is compiled into java byte code.
+3.Loading class : The application loads the servlet class into memory using the application classLoader.
+4.Instantiation : The application instantiates an instance of the servlet class for each JSP in the application.
+5.Initailization : The jspInit () method is called on the instance to initialize it.
+6.Service : The jspService method is invoked for each request recieved for the JSP.
+7.Destruction : The servlet instance is taken out of service jspDestroy () method called.
+
+** Three types of predefined tags :
+1.Directives
+2.Scripting
+3.Actions
+
+* JSP Elements :
+<!-  -->           HTML Comment
+<%--   --%>   JSP Comment
+<%!   %>       Declaration
+<%= %>        Expressions
+<%  %>         Scriplets
+<%@  %>     Directives
+
+** DIRECTIVES :
+-Directives provide general info about the JSP pages to JSP engine.
+-3 types of directives :
+ 1.Page : Control properties og JSP page.
+ 2.Include : Include the content of file into the JSP page at translation time.
+ 3.Taglib : Make a custom tag library avaliable within the including page.
+
+General syntax :
+  <% @ directives [..] %>
+
+1.PAGE DIRECTIVE :
+-A page directive informs theJSP engine about the oevrall properties of a JSP page
+   <%@  [attribute="value "*]  %>
+-Attributes are :
+ -import    <%@ page import="java.util.*" %>
+ -session  <%@ page session="true" %>
+ -errorPage  <%@ page errorPage="error.jsp" %>
+ -isErrorPage  <%@ page isErrorPage="true" %>
+ -language   <%@ page language="java" %>
+ -buffer and autoFlush  <%@ page buffer="8kb" %>    <%@ page autoFlush="true" %>   
+
+2.INCLUDE DIRECTIVE :
+-Includes the contents of a file into the JSP page during the translation phase.
+  <%@ include file="header.jsp" %>
+
+** SCRIPTING ELEMENTS :
+-This elements actually deal with the java code.
+-Scrpting element divided into 3 parts :
+1.Declaration : Declare and define variables and method.
+  <%!  int count =0; %>
+
+2.Scriplets : Java code fragments that are embedded in the JSP page.
+ <%
+   for(int i=0;i<10;i++){
+	   count++;
+   }%>
+
+3.Expression : Act as placeholders for java language.
+   <%= count %>  
+
+** JSP IMPLICIT OBJECTS :
+-These objects in JSP are the are created by the container automatically.
+-They are accessed using standard variables hence are called implicit objects.
+-Objects :
+-out
+-request
+-response
+-session
+-application
+-page
+-pageContext
+-config
+-exception
+
+
+** ACTION TAG :
+1.<Jsp:include>  : Include the resources at the time og page is requested.
+2.<jsp:forward> : Forward the resources at the time of page is requested.
+3.<jsp:param> : Pass the parameters to dynamic pages.
+
+4.<jsp:useBean> :
+-Declare the use of javabeans instance in a JSP page.
+-Require 3 different compenents :
+ 1.HTML/JSP :
+ To accept user data or display result(View).
+ 2.JSP pages with <jsp:useBean>
+ Navigation flow of application (Controller).
+ 3.JavaBEansClass 
+ Concentrate on business logic (Model).
+
+5.<jsp:setProperty> :
+-Sets the beans properties.
+
+6.<jsp: getProperty> :
+-Gets the beans properties.
+
+** WHY LAYERED APPLICATION DESIGN? :
+-Responsibilities can be clearly divided
+-Separate business logic and presentation
+-Change in business logic layer does not affect the presentation layer and vice-versa.
+-All the 3 tasks can be handled by different components
+ Mange the user's interaction with the system.
+ Manage actual data.
+ Format data in multiple ways and present it to the user.
+  e.g. Online Stock Trading facilities
+Solution :
+-MVC (Model View Controller)
+
+** INTRODUCTION TO MVC PATTER :
+-Layered architecture for a web application
+-Used to separate business logic from user interface and from program flow
+-Consist of following components:
+ Model - concentrates on business logic
+ View - displays result of business logic (Model)
+ Controller - navigation flow of application
+
+** USING A JAVA CLASS WITH JSP :
+-Usage of MVC in JSP makes it mandatory to provide the business rule implementations in a Java bean.
+-A Java class is used in JSP with the <jsp:useBean> predefined tag.
+-<jsp:useBean> tag instantiates the Java class specified in the attribute list.
+Using a Java class with JSP
+-The scope of the object is governed by the scope attribute.
+ Application
+ Session
+ Request
+ Page
+
+.
+
+* Scopes are associated with container objects.
+-JSP has 4 different scopes.
+-All the implicit objects as well as the user-defined objects in JSP page exist in one of these four scopes.
+ 1. Application: Limited to a single web application
+ 1. Session: Limited to a single user session
+ 3. Request: Limited to a single request
+ 4. Page: Limited to a single page
+
+** JSP PAGE SCOPES :
+-Application Scope :
+ Objects in this scope are shared across all the components of web application.
+ Accessible for the life of the application.
+ Uses setAttribute() ServletContecp.interface. and getAttribute() of
+-Session Scope :
+ Shared across all the requests that belong to single user session.
+ These objects are maintained as attribute-value pairs HttpSession interface.
+
+** LIMITATIONS OF JAVA SCRIPLETS : 
+-Java scriplets are embedded in JSP to implement dynamic code.
+-Problem
+ Leads to reduced readability
+  Goes against MVC principles by mixing responsibilities.
+ Development becomes slower
+  Designer and developer are dependent on each other work
+ Data rendering on JSP
+ Response expression
+-This problem can be overcome using
+ EL (Expression Language)
+ JSTL (JSP Standard Tag Library)
+
+**INTRODUCTION TO EXPRESSION LANGUAGE :
+-Programming language contructs complete with operators syntax and reserved words.
+-Introduced in JSP 2.0 specification.
+-It is comparable with traditional JSP script expressions. 
+  Output of both is same but ${} is not java code.
+-Goal of EL is to remove java from JSPs.
+ It returns an undefined value.
+ EL expressions cannot use variables declaration in scriplets.
+
+** JSP STANDARD TAG LIBRARY (JSTL) :
+-Certain standard tasks which need to be implemented regardless of application domain.
+-Are encapsulated into a library which provides  a custom tag implementation for each.
+-This known as JSP Standard Tag Library (JSTL).
+-Greatly reduce the need to provide implementation to oft-repeated tasks,by providing ready-made,reusable custom tag.
+-JSP has to provide the prefix provided through the JSTL libraries.
+
+*The sub libraries includes :
+-Core : Tag for general purpose processing.
+-xml : Tags for parsing,selecting,and transfer xml data.
+-fmt : Tag for formating data for internatonal use.
+-sql : Tags for accessing relational database.
+-functions : Tags for manipulating strings and collections.
+
+** JSTL CORE :
+-General Purpose : <c:catch> , <c:out>
+-Variable support : <c:set> , <c:remove>
+-Flow Control : <c:if>, <c:choose>, <c:forEach>, <c:forToken>
+-URL handling : <c:url>, <c:import>, <c:redirect>
+
+** JSTL- SQL :
+The JSTL SQL actions help to
+ Perform database queries(select)
+ Easily access query results
+ Perform database updates(insert,update,delete)
+ Group several database operations into a transaction
+
+1.Insert  :
+  <sql:update dataSource="${connection}"> 
+insert into employee values(?,?,?)
+<sql:param value="102"></sql:param>
+<sql:param value="Vinit"></sql:param>
+<sql:param value="30000"></sql:param>
+</sql:update> <br> <br>
+
+2.Update :
+<sql:update dataSource="${connection}"> 
+update employee set name=?,salary=? where id=?
+<sql:param value="Prathmesh"></sql:param>
+<sql:param value="100000"></sql:param>
+<sql:param value="101"></sql:param>
+</sql:update> <br> <br>
+
+3.Delete :
+<sql:update dataSource="${connection}" > 
+delete from employee where id=?
+<sql:param value="102"></sql:param>
+</sql:update> <br> <br>
+
+*****************************************************************************************************************************************
+*****************************************************************************************************************************************
+
+*************************************************************** HIBERNATE  ***************************************************************
+
+* PERSISTENCE :
+-In java terms object do not live beyond the scope of the JVM,because object are transient.
+-Persistence means applications data to outline the applications process.
+-In simple words we want to store the object state across the time and space for future use.
+
+* PERSISTENCE MECHANISMS :
+-Serialization
+-JDBC
+-XML
+-JASON
+
+** ORM : 
+-ORM stands for Object-Relational Mapping
+-ORM refers to the automated presistence of the object in java application to the tables in the relational database,using metadata that describes the mapping
+ between the objects and database.
+
+  OOP    ==>  ORM   ==>   RDB  
+
+* ADVANTAGES OF ORM TOOLS :
+-Better system architecture
+-Reduce coding time
+-Caching and Transaction
+-ORM implementation
+ Hibernate
+ iBatis/MyBatis
+ TopLink
+
+** HIBERNATE :
+-Hibernate is an ORM framework which maps a java object to the RDBMS based on the metadata we provide using XML/Annotation.
+-Hibernate is open source.
+-Developed by Gavin King.
+-Hibernate is POJO based.
+-Hibernate is suitable for any kind of java application from desktop to web application even with other framework.
+-Hibernate is used for the presistence.
+
+  Java Class    ===>  Hibernate    ===> Database Table
+
+** STEP TO BUILD HIBERNATE APPLICATION :
+Step 1.Create Maven Project.
+ Group id means nothing but package name.
+ Artifact id means project name.
+
+*What is MAVEN : 
+-Maven is a powerful build automation and project management tool used mainly in Java development.
+-In simple terms, Maven helps you build, manage, and organize your Java project easily.
+
+*Why Use Maven?
+-No need to manually download libraries
+-Easy project setup
+-Consistent structure
+-Saves time in large projects
+-Widely used in industry
+
+* Project Object Model (POM) :
+-Maven uses a file called pom.xml to manage everything.
+-It contains:
+ Project info (name, version)
+ Dependencies
+ Plugins
+ Build configuration
+
+Step 2 : Add Hibernate and Hibernate Dependencies. (add into POM.xml)
+Step 3 : Create POJO Class.
+Step 4 : Create hibernate.cfg.xml
+
+** BASIC ARCHITECTURE :
+ Application Classes   ===>  Hibernate    ===>   Database Server
+
+** HIBERNATE API :
+-SessionFactory
+-Configuration
+-Session
+-Trabsaction
+-Query
+-Criteria
+
+ Configuration   ==>  Session Factory    ==> Session Object    =====>   Database
+                                                                                                         Transaction
+
+** SESSION FACTORY :
+-It is a interface.
+-Session factory is a heavy weight,immutable,object responsible to provide Session object.
+-Typically there is one Session Factory per database.
+-The behaviour of a Session Factory is controlled by properties supplied at configuration time.
+
+** CONFIGURATION :
+-It is a class.
+-An Entry point object allows the application to specify properties and mapping documents to be used when creating a Session Factory.
+-The configuration is meant only as an initilization-time object.
+
+** SESSION :
+-It is an interface.
+-Session is light weight object which represents a conversation between java application and database.
+-It wraps database connection object.
+-One application can open multiple sessions.
+-Every session must be associated with transaction.
+-It used invoke hibernate.
+-CRUD [Create/Update/Delete]methods.
+-Ex.save(),load(),get(),update(),delete().
+
+** TRANSACTION :
+-It is a interface
+-Transaction allow the application to define units of work,while maintaing abstraction from the underlying transaction implementaion(Ex. JTA,JDBC).
+-A transaction is associted with Session and is usually instantiated by a call to Session.beginTransaction().Maintains atomicity.
+
+** QUERY :
+-It is interface. 
+-An object-oriented representaion of a Hibernate query.
+-To obtain the Query Object we are required to use the session.getQuery().
+
+** CRITERIA :
+-Criteria is a simplified API for retrieving entities by composing Criterion objects.
+-It is a very convenient approach for functionality like "Search" screens where there ia a variable number of conditions to be placed upon the result set.
+
+** HIBERNATE CONFIGURATION :
+-There are several approach to provide configuration to Hibernate.
+ standard java properties file called hibernate.properties
+ XML file named hibernate.cfg.xml
+ Annotations.
+
+** (Database Configurations)
+
+** Hibernate Property Name                                            Use                         
+JdbcDriver classs name                           hibernate.connection.driver_class
+hibernate.connection.url                       JDBC URL to the database instance
+hibernate.connection.username         database username
+hibernate.connection.password         database password
+hibernate dialect                                     This property makes Hibernate generate the appropriate SQL for the chosen database
+hibernate.connection.autocommit    Allows autocommit mode to be used for the JDBC connection
+hibernate.connection.pool size          Limits the number of connections waiting in the Hibernate database connection pool 
+
+
+** Annotation :
+Modifier                                            Discription
+@Entity                         Marks a class as a Hibernate Entity (Mapped class)
+@TableName              Maps this class with a database table specified by name modifier. If name is not supplied it maps the class with 
+                                       a table having same name as the class
+@Id                                Marks this class field as a primary key column
+@GeneratedValue     Instructs database to generate a value for this field automatically
+@ColumnName          Maps this field with table column specified by name and uses the field name if name modifier is absent
+
+
+** HIBERNATE QUERY LANGUAGE (HQL) :
+*Bulk Oprations in Hibernate :
+-To perform bulk operations,we can use one of the following techniques.
+ Hibernate Query Language (HQL)
+ Hibernate API
+ SQL
+
+** HQL :
+-HQL queries are easy to learn because HQL looks like SQL only.
+-HQL queries are also called as Object Oriented form of SQL queries.
+-We can easily translate the SQL commands into HQL commands by replacing the table name with POJO class names and column name with POJO property name.
+-At runtime hibernate will convert the HQL query into SQL query according to database.
+
+-IN HQL we can divide the select operations into 2 types :
+1.Reading Complete Entity using from clause.
+2.Reading Partial Entity using select clause.
+
+1.Reading Complete Entity (from clause) :
+-In HQL selecting the all the columns is called reading a complete entity.
+Ex:
+ SQL : select * from emp;
+ HQL : from emp e;
+-HQL commands to read a complete entity are directly begins with "from " keyword.
+
+2.Reading Complete Entity (select clause) :
+-In hibernate reading a specific columns is called reading partial entity or entities.
+Ex:
+ SQL : select id,name,salary from emp;
+ HQL : select e.id,e.name from emp e;
+
+** Parameter Binding in Hibernate :
+There is two types of parameter binding in the HQL 
+1.Positional Parameter  :
+  Query q =session.createQuery("from employee e where e.salary between ? and  ?");
+  q.setParameter(0,minSal);
+  q.setParameter(1,maxSal);
+
+2.Name Parameter :
+   Query query8=session.createQuery("from EmpTable where id=:id");
+   query8.setParameter("id", 2);
+   EmpTable e7= (EmpTable) query8.uniqueResult();
+   System.out.println(e7);
+
+
+** HIBERNATE CRITERIA API (QBC) :
+-In Hibernate Query Language (HQL) we manually prepare the HQL queries for reading the data from database.
+-Instead of writing the HQL queries and tuning them explicity we can use use Hibernate Criteria API.
+-Hibernate Criteria is a siimplified API for retrieving entites.
+
+ ** Steps for Hibernate Criteria API :
+Step 1: Obtain a Criteria instance for an Entity
+ Criteria c = session.createCriteria(Book.class);
+Step 2: Add the projections (only specific properties) to the criteria to read partial entity
+ Projection pri Projections.property("title");
+ c.setProjection(pri)
+ ProjectionList plist plist = Projections. projectionList();
+ plist.add(Projections.property("title"));
+ plist.add(Projections.property("price"));
+ c.setProjection(plist);
+
+** COMPONENT MAPPING :
+* Creating Persistent Classes :
+-The entire concept of Hibernate is take the value from java class attribute and persist them to a database table.
+-A mapping document helps Hibernate in determining how to pull the values from the classes and map them with table and associated fields.
+-Java classes whose objects or instance will be stored in database tables are called persistent classes in Hibernate. 
+
+
+* Creating Persistent Class :
+-Hibernate supports following three most important mapping
+ has-a - Component Mapping
+ is-a - Inheritance Mapping
+ Mapping of associations between entity classes.
+
+** Component Mapping :
+-Entity class can have a reference to another class as a member variable.
+-A component mapping is mapping for a class having a refernce to another class as a member variable.
+-Only single table is enough which holds the information of all the attributes of both classes.
+-@Embedded is used to embed a type into another entity.
+-@Embeddable  annotationcto declare that a class will be embedded by other entites.
+-Both annotations need to be used together to map has-a kind of class relationship.
+
+   Employee  ===>  has-a  ===> Address
+
+** INHERITANCE MAPPING :
+-Relational databses dont have striaghtforword way to map class hirarchies onto database tables.
+-To address this the JSP spcification provides several strategies: 
+ Table Per Hierarchy
+ Table Per Concrete Class
+ Table Per Subclass
+-Each strategy results in a different database structure.
+
+Following annotations are used this mapping :
+ @Inheritance(strategy  = InheritanceType.SINGLE_TABLE)
+  The single cTable stratergy creates ine table for the entire class hirarchy
+
+ @DiscriminatorColumn and @DiscriminatorValue
+   The extra column details are provided using @@DiscriminatorColumn
+   The discriminator value is used to define the each row/record
+
+* INHERITANCE MAPPING TABLE PER HIERARCHY :
+-In table per hirarchy mapping single table is required to map the whole hirarchy.
+   @Inheritance(strategy  = InheritanceType.SINGLE_TABLE)
+
+* TABLE PER CONCRETE CLASS :
+1.Inheritance Mapping-Table Per Concrete class :
+-Disadvantage of this approach is that duplicate columns are created in the subclass tables.
+Ex.Annotaions :
+-@Inheritance(strategy  = InheritanceType.TABLE_PER_CLASS) annotation in the parent class.
+-@AttributeOverrides annotation in the subclass.
+
+2.Inheritance Mapping-Table Per Subclass :
+-In this case tables are are created as per persistent classes but they are related using primary and foregin key.
+-So there will not be duplicate columns in the relation.
+Ex .Annotaions :
+
+** ASSOCIATIONS BETWEEN ENTITY CLASSES :
+-Using Hibernate we can put the following 4 types of relationships
+ 1.One-TO-One
+ 2.One-To-Many
+ 3.Many-TO-One
+ 4.Many-To-Many
+ 
+1.Hibernate ONE TO ONE Mapping :
+-   Employee   ===>   HasA   ===>   EmployeeDetails
+-According to the relationship each employee should have a unique EmployeeDetails.
+-Annotations Used :
+ @OneToOne
+ @PrimaryKeyJoinColumn
+
+-MappedBy :
+-In bidirectional relationships, both entities refer to each other. But only one side should manage the relationship (owning side).
+ The owning side → contains the foreign key
+ The inverse side → uses mappedBy 
+
+2.Hibernate ONE TO MANY Mapping :
+-   Department   ===>   HasA   ===>   Employee
+-According to the relationship each department has a multiple employee.
+-Annotations Used :
+ @ManyToOne
+ @JoinColumn(name="department_id)
+
+4.MANY TO MANY :
+-Relationship between Actor and Movie entity.
+ Multiple Actors can be associated with one movie and vice versa
+-Annotations used :
+@ManyToMany
+@JoinTable
+
+1.The get() method is primarily used for eager loading, meaning it attempts to fetch the actual data immediately. 
+Database Hit: It immediately hits the database (if the object is not already in the session cache) to retrieve a fully initialized object.
+Missing Data: If no record exists for the given primary key, it returns null.
+Return Type: Returns the actual persistent entity or null.
+Best Use Case: Use get() when you are not certain if the object exists in the database and want to perform a null check before proceeding. 
+
+2. load() Method
+The load() method is designed for lazy loading to improve performance by delaying database access. 
+Database Hit: It does not hit the database immediately. Instead, it returns a proxy object—a placeholder that only contains the identifier. The actual database query is triggered only when you access a property of the object other than its ID.
+Missing Data: If the record does not exist, it will throw an ObjectNotFoundException (specifically org.hibernate.ObjectNotFoundException) when you attempt to access its properties.
+Return Type: Returns a proxy object (a dynamic subclass of the entity).
+Best Use Case: Use load() when you are certain the record exists, or when you only need a reference to the object (e.g., to set a foreign key relationship in another entity) without needing its full data. 
+
+********************************************************************************************************************************************
+********************************************************************************************************************************************
+
+*************************************************************  SPRING ***********************************************************************
+
+
+** SPRING FRAMEWORK :
+-Spring is a lightweight dependency injection and aspect oriented container and framework.
+-Spring is a Container as it creates the java components for your appliction and manages.
+-It is lightweight in terms of size and overhead.
+-Spring promotes loose coupling through dependency injection.
+-The container give the dependencies to java components at instantiation.
+-Spring supports AOP which enables developments by separating business logic from system services(Such as logging or transaction management)
+-Spring is a framework as it provides components to build common part of application such as data access support MVC support etc
+
+
+** DEPENDENCY INJECTION :
+-Dependency Injection is a technique through which are given to the components so that components need tot create dependent objects themselves
+-Employee object is dependent on Address object which is example of simple association or HAS-A relationship.
+-At the time of creating Employee, first the Address component is created and given to the Employee by the Spring Container
+-The container will inject the Dependent Object (Address) inside Java Component (Employee), therefore process is known as Dependency Injection
+
+** DI/IoC Container :
+-Dependency injection technique (DI) is also known as Inversion Of Control (Ioc)
+
+** Advantages of using DI :
+-Reduce glue code
+-Externalize dependencies
+-Manage dependencies in a single place
+-Improve testability
+-
+
+** ASPECT ORIENTED PROGRAMMING (AOP) :
+-AOP is programming technique that promotes sepration og business logic from the system concerns such as logging,transaction management,security,persistence etc.
+-Benifits : 
+ The code that implements these system wide concerns is not duplicated across multiple components.
+ The components developments is simple as they can focus now only on core business logic
+-AOP makes it possible to modularize these services and then apply them declaratively to the components.
+-AOP complements OOP by providing another way of thinking about program structure.
+-Aspects enable modularization of concerns such as logging,trasnsaction management that cut across multiple components.
+-Aspects can be added or removed as needed without changing the actual business code.
+
+** SPRING FRAMEWORK - CORE MODULES :
+-The Core Container :
+ Provides the fundamental functionality of the Spring Framework containing the BeanFactory,which is the fundamental spring container and 
+ the basis on which Spring DI based.
+
+-Application Context Module :
+ Built on the core container making spring a Framework.
+ Provides support for i18n,application life cycle events and validation.
+
+-AOP Module :
+ This module serves as the basis 
+
+
+** BEAN MANAGEMENT IN SPRING :
+*BeanFactory :
+ In a Spring-based application,the application objects will live within the Spring container.
+ The BeanFactory interface standarlize the spring bean container behavior.
+ A BeanFactory is an implementation of the Factory design pattern.
+
+** Simple Bean Configuration File :
+-bean : The element which is most basic configuration unit in Spring.It tells Spring Container to create an object.
+-id : The Attribute which gives the bean a name by which it will be reffered to in the Spring Container.
+-Class : The attribute which tells Spring the type of a Bean.
+
+** Accessing Bean From BeanFactory :
+ Resource resource = new FileSystemResource ("Employees.xml");
+ BeanFactory factory=new xmlBeanFactory(resource);    
+ Employee emp = (Employee) factory.getBean("emp");
+
+** Types of Resource Implementations :
+          Resources                                             Purpose
+-FileSystemResource                      It retrive from FileSystem
+-InputSteanResource                      It retrive from an InputSystem
+-ByteArrayResource                        Contents are given by array of bytes
+-ClassPathResource                         It retrive from the Classpath
+-UrlResource                                     It retrive from given URL
+-ServletContextResource               A resource that is available in Servlet Context.
+
+** HOW DI/IoC Container works :
+-In Inversion Of Control (IoC) control is inverted back to the Container to support the object dependencies.
+-IoC container creates the POJO objects and provides dependent object to them.
+-The declarative configuration for POJO objects is defined with unique identies (id) in XML.
+-The IoC container at runtime idebtifies POJO bean definations create bean objects and return them to the Application
+-IoC container manages dependencies of objects.
+
+** BeanFactory - Interface Hirarchy :
+
+  * BeanFactory Sub Interface
+
+                                                                                  BeanFactory
+
+            ConfigurationBeanFactory              ApplicationContext             AutowireCapableBean Factory
+
+                            ConfigurationApplicationContext          WebapplicationContext
+
+** ApplicationContext :
+-The Interface ApplicationContext extends from BeanFactory
+-To build application in J2EE environment,one should use implementation of ApplicationContext as it supports additional features .
+
+** Accessing Bean from ApplicationContext :
+-ApplicationContext context = new FileSystemxmlApplicationContext ("employee.xml");
+-Employee emp =(Employee) context.getBean("emp");
+
+** Types of Application Context :
+-ClassPathxmlApplicationContext :
+ Loads a context defination from an XML file located classpath,treating context defination file as classpath resources
+-FileSystemcmlApplicationContext :
+ Loads a context defination from an XML file in the file system
+-xmlWebApplicationContext :
+ Loads context definations from an XML file contained within web application
+
+** LIFE CYCLE OF BEAN IN SPRING CONTAINER :
+
+  Instantiate  ==>  Populate Properties  ==>  BeanNameAware setBeanName()  ==>  BeanFactoryAwares setBeanFactory()  ==>   ApplicationContextAwares   setApplicationContext()
+
+** TYPICAL BEAN LIFE CYCLE :
+-Instatiate :
+ Spring instatiates the bean
+-Populate properties :
+ Spring injects the beans properties
+-Set Bean Name :
+ It the bean implements BeanNameAware Spring passes the beans ID to setBeanName ()
+-Set Bean Factory :
+ 
+
+**(ASPECT ORIENTED PROGRAMMING)  AOP :
+1.AOP is a programming technique :
+-It separates :
+ -Business logic (main work)
+ -Common logic (repeated work)
+Common tasks are needed in many classes and 
+
+2.Cross-Cutting Concern : 
+-A Cross-Cutting Concern is task that is used in many places in an application.
+-Ex:   
+ Logging
+ Security
+ Transaction
+ Exception Handling
+-These tasks are needed in many classes and methods.
+
+3.Aspects:
+-An aspect is a special class.
+-It contains cross-cutting concerns
+-Ex:
+ LoggingAspect
+ SecurityAspect
+
+4.Advice :
+-Advice means what to do and when to do.
+-It contains the code that runs:
+  Before Method
+  After Method
+  Around Method
+
+5.Join Point
+-A Join Point is a point where advice can be applied
+-In Spring :
+  A method execution is a join point.
+
+6.Pointcut :
+-A pointcut selects which methods should run the advice.
+-Simple line :
+  Pointcut  where advice should run.
+
+7.Target :
+-Target is the original object.
+
+8.Proxy :
+-Proxy is a new object created by Spring.
+-It adds advice logic and then calls the target object.
+
+9.Weaving :
+-Weaving means connecting advice with target
+-Type of Weaving :
+1.Compile Time : Advice is added while compiling the code.
+2.Class Load Time : Advice is added when class is load into JVM.
+3.Runtime : Advice is added while application is running (Spring uses this type).
+
+10.Spring AOP Support :
+-Advice is written in Java.
+-Spring uses Proxy objects.
+-Advice runs at runtime.
+-Final method cannot be advised.
+-Spring supports only method join points.
+
+11.Types of Spring AOP Advices :
+1.Before Advice : Runs before method execution.
+2.After Returning Advice : Runs after method return successfully.
+3.After Throwing Advice : Runs after method throws execution.
+4.Around Advice : Runs before and after method execution.
+
+** SPRING DATA ACCESS DESIGN :
+ Service Object   ===>  DAO Interface    <===   DAO Implementation
+
+* Spring Data Access Design :
+-Spring data access support allow to develop applications following principle of coding to interface.
+-Data Access Object (DAO) exposes this functionality through an interface by which principle of coding to interface.
+-Service objects accessing DAOs through interface is better design approach.
+
+** Data Acsess Template :
+-Spring seperates the fixed and variable parts of the data access process into two classes
+  Template : Manage the fixed part of data access process such as opening connection and closing it at the end.
+  Callbacks : handle custom data access code
+-DAO Template:                                            DAO Rollback
+1.Prepare Resources                                 3.Execute in Transaction
+2.Start Transaction                                     4.Return Data         
+5.CommitRollback Transaction
+6.Close Resources and handle errors  
+
+* DAO Supports Classes :
+-Spring provides DAO support classes on top of template-callback design.
+-DAO support classes provide convinient access to the appropriate template class.
+   Application DAO  ===>  DAO Support  ===>  Data Access Template  ===>  Persistaence  Framework  ===>  Database
+
+* Configuring DataSource on Spring :
+-Spring options for configuring Data Source Beans
+  1.Data source that are defined by JDBC driver
+  2.Data source that are looked up by JNDI
+  3.Data source that are pool connection
+
+1.  Data source that are defined by JDBC driver :
+-DriverManagerDataSource 
+ It returns a new connection every time a connection is requested
+ Creating new connection each time affects the performance.
+-SingleConnectionDataSource 
+ 
+2.Data source that are looked up by JNDI :
+-Application Servers allows to configure data source to be retrived via JNDI
+
+* JDBC Template :
+-Spring abstracts away the boilerplate data access code behind the Template classes
+-NamedParameterJdbcTemplate
+-SimpleJdbcTemplate
+
+* Steps for using JDBC Template :
+1.Configure the dataSource bean in Spring cinfig file configure the JDBC Template in Spring config file
+2.Writing EmployeeDao class
+   Configure DAO class,writing JDBC Template 
+3.Configure the dataSource bean in spring config file .Write EmployeeDao class which extends JDBCDaoSupport
+   Configure DAO class wiring directly dataSource into it.
+
+** TRANSACTION :
+-A transaction is a group of operations that are executed as one single unit of work.
+ Either all operations succed
+ Or all operations fail
+-The system moves from :
+ One consistent state -> another consistent state
+Ex:
+ Money transfer from Account A to Account B
+ Debit+Credit =one transaction
+
+* ACID PROPERTIES :
+-ACID ensures that transactions are safe and reliable.
+A-AUTOMACITY :
+-Means "all or nothing".
+-Either all operations are performed or none.
+Ex : If debit happens but credit fails -> rollback debit
+
+C-CONSISTENCY :
+-After transaction data must follow business rules.
+-Database should never be left in an invalid
+Ex : Account balance should never become negavtive
+
+I-ISLOATION :
+-Multiple transactions should be not affect each other
+-Each transaction behaves as if it is the only one running.
+Ex : Two users updating same record  should not corrupt data.
+
+D-DURABILITY :
+-Once transaction is committed data is permanent
+-Data survives :
+ System crash
+ Power failure
+
+** SPRING TRANSACTIONS :
+-Spring provides easy and consistent transaction management
+-Spring supports:
+ Programmatic Transaction Management
+ Declarative Transaction Management
+
+* SPRING HIDES :
+-Low-level transaction code
+-Database-specific details
+-Spring works uniformly with :
+ JDBC
+ Hibernate
+ JPA
+ JTA
+ JDO
+
+-DataSourceTransactionManager --> JDBC
+-HibernateTransactionManager --> Hibernate
+-JpaTransactionManager --> JPA
+-JtaTransactionManager --> Distrubuted Transaction
+
+*JDBC Transaction in Spring :
+-If application uses plain JDBC :
+-Spring uses DataSourceTransactionManager
+-It manages transaction using java.sql.connection.
+
+* Hibernate Transaction :
+-Used when Hibernate ORM is used
+
+** Spring Transaction Attributes :
+-Transaction attributes define how a transaction should behave.
+-They are mainly used in declarative transactions.
+
+* Important Transaction Attributes : 
+1.Propagation Behavior :
+-Defines how transactions are created or joined.
+-Controls transaction boundaries.
+
+2.Isolation Level :
+-Defines how transaction ontract with each other.
+-Controls concurrent data access.
+
+3.Read-Only :
+-Indicates transaction is only for reading data.
+-Helps performance optimization.
+
+4.Timeout :
+-Maximum time  a transaction can run.
+-If exceeded -> transaction is rollback automatically.
+
+5.RollBack Rules :
+-Defines when transaction should rollback.
+-Can rollback are : 
+ Runtime exception
+ Checked exception
+
+** Transaction Propagation Behavior :
+-It defines how a method should behave with transaction when it is called.
+1.Propagation_Required :
+-Default behavior
+-Uses existing transaction if present
+-Otherwise starts a new transaction
+Most commonly used
+
+2.Propagation_Mandatory :
+-Method must run inside a transaction.
+-If no transaction exists -> exception
+Used when transaction is compulsaory.
+
+3.Propagation_Required_New :
+-Always starts new transaction.
+-Existing transaction is suspended.
+Independent transaction.
+
+4.Propagation_Nested :
+-Runs inside a nested transaction
+-Can commit or rollback independently
+-If no transaction exists -> behaves like Required
+Uses Savepoints
+
+5.Propagation_Supports :
+-Uses transaction if available
+-Otherwise runs without transaction.
+Optional transaction support.
+
+6.Propagation_Not_Support :
+-Runs without transaction
+-Existing transaction is suspended.
+Non-transactional logic
+
+** Transaction Isolation Levels :
+Isolation  controls how transactions affect each other.
+
+1.Isloation_Default :
+-Uses databases default isolation levels.
+
+2.Isloation_Read_Incommitted :
+-Can reed uncommitted data
+-Allow dirty reads
+Not least safe
+
+3.Isloation_Read_Committed :
+-Read only committed data
+-Prevents dirty reads
+Commonly used
+
+4.Isloation_Repeatable_Read :
+-Same data read multiple times give same result.
+-Prevents dirty+not repeatable reads.
+
+5.Isloation_Serializable :
+-Highest isloation level.
+-Prevents all read problem.
+-Uses full table locks
+Slow but safest.
+
+
+***************************************************************  SPRING BOOT  ****************************************************************
+
+** SPRING :
+-A framework where you have to setup everything yourself.
+-A java framework that helps you to build java application.
+-you can make web apps Rest APIs or Enterprise Apps you have to manually configure everything (Beans Dependency,server etc).
+
+** SPRING BOOT :
+-Spring boot is an open source framewrok (java based).
+-Its helps you to build applications.
+-you can web apps Rest Apps or Enterprise Apps it helps you start project quckly with less configuration
+-Embedded server auto configuration started dependencies are ready to use.
+-Spring Boot is built on the top of framework.
+-If offers an easier way of getting started with the application.
+-In Spring Boot everything is auto configured no mannual configuration are needed.
+-It offers annotation based application.
+
+*DEPENDENCY :
+-A dependency is a library or peace of code that a project need to work,in Spring Boot dependency provide redimate features like Rest API,Database Connection
+ API Template so we dont need to write code from scratch.
+
+*Ex Dependencies : 
+SPring Web : Rest API,HTTP,Embedded Server
+Spring Boot Dev Tools : Auto reload application during devop
+ThymLeaf : Html templates,forms,loops ets
+Oracle Driver : To connect database
+SpringJPS/Hibernate : Simplifies database application with repository
+Spribg Boot starter test : Unit testing,integration
+Spring Security 
+
+* SPRING MVC :
+-A spring MVC is a java framework which is used to build web applications.
+1.M Model : A model contain data of application.
+2.V View : A view reprsents the provided information in particular format.
+3.C Controller : A controller contains the business logic of an application @Controller annotation used to mark class as controller.
+
+
+** ANNOTATIONS :
+1.@SpringBootApplication :
+-Entry point for Spring Boot.
+-It combines @Components,@ComponentScan,@EnableAutoConfiguration
+
+2.@Controller :
+-Marks a class as a web controller
+-Returns view,HTML,JSP,Thymleaf
+
+3.@RestController :
+-Use for Rest APIs
+-Return Jasons,XML,NotView
+
+4.@RequestMapping :
+-Map to controll class
+-Class level prefix  and method level end point
+
+5.@GetMapping :
+-Handles get request
+-Ex Fetch the data
+
+6.@RequestParam :
+-It is used to retrive the value from the HTML page.
+
+7.@PostMapping :
+-Handles post request like form submit,create etc.
+
+8.@ModelAttribute :
+-Bindes form data to a model object.
+
+9.@AutoWired :
+-Automatically inject dependency  no need of new keyword.
+
+10.@Repository :
+-Mark a class as Data Access Layer (DAO)
+-Converts DB exceptions into spring data access exception.
+
+11.@Service :
+-Male a class as service (Business Logic Layer)
+-Manage automatically by spring container.
+
+12.@PathVariable :
+-Pick value from url and maps to parameter.
+
+13.@ResponseBody :
+-Sends data directly in HTTP response body.
+
+* APPLICATION.PROPERTIES :
+-In Spring Boot application the application.properties file is where you define configuration settings.
+-(Like server port,database connection,logging etc.)
+-Adding notes/comments insdie this file is very common for clarity.
+
+** JAVA PERSISTENCE API (JPA) :
+-It is a specification for ORM (Object Relational Mapping).
+-It defines how java object map to DB table.
+-Hibernate is one of the implementation of JPA.
+-JPA provide rule or interface and hibernate code follows it.
+-JPA have in built function.
+

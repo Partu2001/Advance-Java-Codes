@@ -1,0 +1,5 @@
+package com.java.daointerface;
+
+public class GiftHibernateInterface {
+
+}

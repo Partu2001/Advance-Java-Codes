@@ -1,0 +1,66 @@
+package com.daoimplement;
+
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+import com.daointerface.StudentDaoInterface;
+import com.entity.Students;
+
+
+@Repository
+public class StudentDaoImplementation implements StudentDaoInterface {
+	
+	@Autowired
+	JdbcTemplate jt;
+
+	@Override
+	public void save(Students s) {
+	String query="insert into students values(?,?)";
+	jt.update(query,s.getId(),s.getName());
+	System.out.println("Data Inserted..");
+		
+	}
+
+	@Override
+	public void update(Students s) {
+		String query="update students set name=? where id=?";
+		jt.update(query,s.getName(),s.getId());
+		System.out.println("Data Updateddd..");
+	}
+
+	@Override
+	public void delete(int id) {
+     String query="delete from students where id=?";
+     jt.update(query,id);
+     System.out.println("Data Deleted...");
+	}
+
+	@Override
+	public Students getById(int id) {
+	String query="select * from students where id=?";
+	return jt.queryForObject(query,(rs,rows) -> {
+		Students s=new Students();
+		s.setId(rs.getInt("id"));
+		s.setName(rs.getString("name"));
+		System.out.println(rows);
+		return s;
+	},id);	
+	}
+
+	@Override
+	public List<Students> getAll() {
+		String query="select * from students";
+		return jt.query(query,(rs,rows) -> {
+			Students s=new Students();
+			s.setId(rs.getInt("id"));
+			s.setName(rs.getString("name"));
+			System.out.println(rows);
+			return s;
+		});
+	}
+
+}

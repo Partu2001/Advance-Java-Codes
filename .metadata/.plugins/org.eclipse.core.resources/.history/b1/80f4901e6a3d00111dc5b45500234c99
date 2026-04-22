@@ -1,0 +1,5 @@
+package com.springbootdemo.SpringBootProject.repository;
+
+public class StudentRepo {
+
+}

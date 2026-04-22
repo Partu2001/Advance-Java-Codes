@@ -1,0 +1,114 @@
+1.
+-JDBc is a java API that allowa java application to interact with the database.
+-Used to connect the database.
+Architecture :
+1.Drivermanager : In that we the oracle driver that drive the driver manager,and it also manages the database drivers and loads it
+2.Connection : used to give the connection between java API and database
+3.Statement : In this statement we can pass the Sql query without parameters,we can not fetch the data using statement
+4.PreparedStatement : In this statement we can pass the SQL query with parameters,we can fetch data using prepared statement
+5.Result Set : It is used to fetch the data from the database.
+
+2.Step of JDBC Connection :
+Step 1 : first pass the localhost url,username,password.
+Step 2.Second the pass the driver manager and pass the link of driver manager
+Step 3:Then give the connection to the database.
+Step 4: Create statemen/prepared statement and then pass the query in it
+step 5: Execute the given query.
+step 6: commit;
+
+3.
+Statement :it is for execute simple SQL query,we cannot fetch the data
+PreparedStatement : We can fetch the data using preparedstatement,it is advance form of statement
+CallableStatement : use to call stored data from the database
+
+4.Resultset :
+-It  is used to fetch the data from the database.
+Types :
+1.Scroll forword
+2.Type_Sensitive
+3.Type_Insensitive
+
+5.Connection Pooling :
+-it is advance technique in JDBC used to created connection
+-we do not need to create connection everytime.
+
+** Servlet :
+1.
+-It is server that runs the java program into the web browser.
+-Used to create dynamic web pages.
+
+
+2.
+-GenricServlet : it is abstract class and it is independent protocol,it implement from servlet interface
+-HttpServlet :it is abstract class and protocol specific,supports http methods,todays life most used servlet
+
+3.
+-doGet: used to get  data,it is less secure.
+-doPost : it also used to get data ,and it is more secure than the doGet.
+
+4.
+-ServletConfig :used to initilization of parameters to servlet.
+-ServletContext : used to share the data to the application.
+
+5.
+-it the technique that used to maintain the user data.
+-Method :
+getAttribute
+setAttribute
+
+** JSP :
+1.
+-In the jsp we can also write the code of html,css,javascript and also the java code.
+-It is different from servlet because servlet runs only java program.
+
+2.
+
+3.
+-Page directive
+-include directive
+-taglib directive
+
+4.
+-Scriplets :
+-Expression : in that we declare the variables,methods,
+-Declartion : it declare the variable and methods in this.
+
+5.MVC 
+-M: Model
+-V : View
+-C:Controller
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

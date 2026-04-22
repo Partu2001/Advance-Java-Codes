@@ -1,0 +1,5 @@
+package com.springbootdemo.SpringBootProject.entity;
+
+public class Student {
+
+}

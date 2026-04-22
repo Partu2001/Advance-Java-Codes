@@ -1,0 +1,41 @@
+package com.app;
+
+import java.util.List;
+import java.util.Scanner;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.daointerface.StudentDaoInterface;
+import com.entity.Students;
+
+public class MainStudent {
+
+	public static void main(String[] args) {
+	
+		ApplicationContext app=new AnnotationConfigApplicationContext("com");
+		
+		  Scanner sc= new Scanner(System.in);
+		  Students s=new Students();
+		  s.setId(103);
+		  s.setName("Tush");
+		  StudentDaoInterface si =app.getBean(StudentDaoInterface.class);
+		  
+     	  si.save(s);
+     	  
+     	  
+////		  si.update(s);
+////		  si.delete(101);
+//		  
+//		  si.getById(101);
+//		  System.out.println(s.getId());
+//		  System.out.println(s.getName());
+//		  
+//		  List<Students> students=si.getAll();
+//		  for(Students st:students) {
+//			  System.out.println(st.getId());
+//			  System.out.println(st.getName());
+//		  }
+	}
+
+}

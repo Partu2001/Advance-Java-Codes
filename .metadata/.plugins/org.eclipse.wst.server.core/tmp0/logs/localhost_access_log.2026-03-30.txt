@@ -1,0 +1,7 @@
+127.0.0.1 - - [30/Mar/2026:10:38:11 +0530] "GET / HTTP/1.1" 404 752
+0:0:0:0:0:0:0:1 - - [30/Mar/2026:10:38:12 +0530] "GET /JSPProject/StudentView.jsp HTTP/1.1" 200 395
+0:0:0:0:0:0:0:1 - - [30/Mar/2026:10:38:13 +0530] "GET /favicon.ico HTTP/1.1" 404 763
+0:0:0:0:0:0:0:1 - - [30/Mar/2026:10:38:22 +0530] "GET /JSPProject/StudentController?name=Prathmesh+Kumbhar&age=24&contact=2442141421 HTTP/1.1" 500 1421
+0:0:0:0:0:0:0:1 - - [30/Mar/2026:10:38:38 +0530] "GET /JSPProject/StudentController?name=Prathmesh+Kumbhar&age=24&contact=244214 HTTP/1.1" 200 272
+0:0:0:0:0:0:0:1 - - [30/Mar/2026:10:41:05 +0530] "GET /JSPProject/StudentController?name=Prathmesh+Kumbhar&age=24&contact=244214 HTTP/1.1" 200 305
+0:0:0:0:0:0:0:1 - - [30/Mar/2026:10:41:24 +0530] "GET /JSPProject/StudentController?name=Prathmesh+Kumbhar&age=24&contact=244214 HTTP/1.1" 200 317
